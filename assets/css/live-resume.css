@@ -9402,15 +9402,16 @@ aside .profile-img-wrapper {
   text-align: center;
 }
 aside .profile-img-wrapper img {
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 aside .profile-name {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
   text-align: center;
   line-height: 30px;
+  padding-top: 10px;
 }
 aside .profile-designation {
   padding: 5px 25px;
@@ -9425,14 +9426,14 @@ aside .social-links {
 }
 aside .social-links .social-link {
   display: inline-block;
-  font-size: 12px;
-  line-height: 1;
+  font-size: 20px;
+  line-height: 1.4;
   color: #0067f6;
   text-align: center;
   background-color: #ffffff;
   padding: 8px;
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin-right: 4px;
 }
@@ -9536,37 +9537,12 @@ header {
 
 .collapsible-nav {
   display: flex;
-  align-items: center;
-  width: 0px;
+  align-items: right;
   overflow: hidden;
   margin-right: 10px;
-  transition: width 0.6s ease-in-out;
 }
 .collapsible-nav.show {
   width: 365px;
-}
-@media (max-width: 991px) {
-  .collapsible-nav {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
-    flex-direction: column;
-    top: 71px;
-    align-items: flex-start;
-    background-color: #ffffff;
-    margin-right: 0;
-    padding-left: 24px;
-    padding-right: 24px;
-    width: 200px;
-    transform: translateX(100%);
-    transition: transform 0.4s ease-in-out, width 0s;
-    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08);
-  }
-  .collapsible-nav.show {
-    transform: translateX(0%);
-    width: 200px;
-  }
 }
 .collapsible-nav .nav-link {
   font-size: 12px;
@@ -9577,12 +9553,6 @@ header {
   height: 24px;
   margin: 0 15px;
 }
-@media (max-width: 991px) {
-  .collapsible-nav .nav-link {
-    margin: 15px 0;
-    height: auto;
-  }
-}
 .collapsible-nav .nav-link.active {
   color: #0067f6;
   border-bottom: 2px solid #0067f6;
@@ -9591,11 +9561,6 @@ header {
 
 body {
   padding: 20px 40px;
-}
-@media (max-width: 991px) {
-  body {
-    padding-top: 87px;
-  }
 }
 @media (max-width: 767px) {
   body {
@@ -9608,7 +9573,7 @@ header {
   display: flex;
   align-items: center;
 }
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   header {
     position: fixed;
     top: 0;
@@ -9618,10 +9583,6 @@ header {
     padding-right: 60px;
     padding-left: 300px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
-  }
-}
-@media (max-width: 767px) {
-  header {
     padding-left: 20px;
     padding-top: 20px;
     padding-right: 20px;
