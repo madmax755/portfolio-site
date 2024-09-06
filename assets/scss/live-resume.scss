@@ -1,0 +1,11 @@
+@import "./variables";
+
+@import "../vendors/bootstrap/scss/bootstrap.scss";
+
+//Partials
+
+@import "./partials/aside";
+@import "./partials/buttons";
+@import "./partials/header";
+@import "./partials/layout";
+@import "./partials/main";
