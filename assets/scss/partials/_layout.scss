@@ -1,5 +1,4 @@
 body {
-    padding: 20px 40px;
 
     @media (max-width: 767px) {
         padding-left: 20px;
@@ -16,13 +15,6 @@ header {
         top: 0;
         left: 0;
         right: 0;
-        padding-top: 20px;
-        padding-right: 60px;
-        padding-left: 300px;
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
-        padding-left: 20px;
-        padding-top: 20px;
-        padding-right: 20px;
     }
 }
 
@@ -39,6 +31,7 @@ aside {
     min-width: 240px;
 
     @media (max-width: 767px) {
+        display: none;
         width: 100%;
         padding-right: 0;
     }
@@ -46,4 +39,6 @@ aside {
 
 main {
     flex-grow: 1;
+    margin-left: 280px;
+    margin-top: 56px;
 }

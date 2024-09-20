@@ -9,6 +9,7 @@ main {
     @media (max-width: 767px) {
         padding-left: 20px;
         padding-right: 20px;
+        margin-left: 0;
     }
 
     .section-title {
@@ -96,7 +97,7 @@ main {
 
             .badge {
                 padding: 6px 10px;
-                font-size: 8px;
+                font-size: 13px;
                 font-weight: $font-weight-medium;
                 line-height: 1;
                 border-radius: 2px;
@@ -104,22 +105,22 @@ main {
             }
 
             &-title {
-                font-size: 12px;
+                font-size: 15px;
                 font-weight: $font-weight-bold;
                 line-height: 1;
                 margin-bottom: 2px;
             }
 
             &-subtitle {
-                font-size: 10px;
-                font-weight: $font-weight-medium;
+                font-size: 13px;
+                font-weight: 500;
                 line-height: 1.6;
-                color: #a7a7a7;
+                color: #858585;
                 margin-bottom: 3px;
             }
 
             &-content {
-                font-size: 10px;
+                font-size: 12px;
                 font-weight: $font-weight-light;
                 line-height: 1.6;
                 margin-bottom: 0;
