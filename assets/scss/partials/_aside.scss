@@ -11,18 +11,18 @@ aside {
         text-align: center;
 
         img {
-            width: 100px;
-            height: 100px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
         }
     }
 
     .profile-name {
-        font-size: 24px;
+        font-size: 26px;
         font-weight: $font-weight-semibold;
         text-align: center;
         line-height: 30px;
-        padding-top: 10px
+        padding-top: 15px
     }
 
     .profile-designation {
@@ -35,6 +35,7 @@ aside {
 
     .social-links {
         margin-bottom: 1rem;
+        margin-top: 10px;
         text-align: center;
 
         .social-link {
@@ -66,7 +67,7 @@ aside {
             margin-bottom: 10px;
         }
         .widget-content {
-            font-size: 13px;
+            font-size: 15px;
             p{
                 margin-bottom: 5px;
 

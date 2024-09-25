@@ -97,7 +97,7 @@ main {
 
             .badge {
                 padding: 6px 10px;
-                font-size: 13px;
+                font-size: 16px;
                 font-weight: $font-weight-medium;
                 line-height: 1;
                 border-radius: 2px;
@@ -105,22 +105,22 @@ main {
             }
 
             &-title {
-                font-size: 15px;
+                font-size: 18px;
                 font-weight: $font-weight-bold;
                 line-height: 1;
                 margin-bottom: 2px;
             }
 
             &-subtitle {
-                font-size: 13px;
+                font-size: 15px;
                 font-weight: 500;
                 line-height: 1.6;
-                color: #858585;
+                color: #6b6a6a;
                 margin-bottom: 3px;
             }
 
             &-content {
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: $font-weight-light;
                 line-height: 1.6;
                 margin-bottom: 0;
@@ -164,16 +164,16 @@ main {
         }
 
         .service-title {
-            font-size: 12px;
+            font-size: 17px;
             font-weight: bold;
             line-height: 1;
             margin-bottom: 8px;
         }
 
         .service-description {
-            font-size: 10px;
+            font-size: 14px;
             font-weight: $font-weight-light;
-            max-width: 180px;
+            max-width: 300px;
             margin-bottom: 0;
         }
     }
@@ -332,7 +332,7 @@ main {
         }
 
         &-description {
-            font-size: 10px;
+            font-size: 13px;
             font-weight: $font-weight-bold;
             line-height: 1.2;
             margin-bottom: 0;

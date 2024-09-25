@@ -9409,16 +9409,16 @@ aside .profile-img-wrapper {
   text-align: center;
 }
 aside .profile-img-wrapper img {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
 }
 aside .profile-name {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
   text-align: center;
   line-height: 30px;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 aside .profile-designation {
   padding: 5px 25px;
@@ -9429,6 +9429,7 @@ aside .profile-designation {
 }
 aside .social-links {
   margin-bottom: 1rem;
+  margin-top: 10px;
   text-align: center;
 }
 aside .social-links .social-link {
@@ -9458,7 +9459,7 @@ aside .widget .widget-title {
   margin-bottom: 10px;
 }
 aside .widget .widget-content {
-  font-size: 13px;
+  font-size: 15px;
 }
 aside .widget .widget-content p {
   margin-bottom: 5px;
@@ -9541,7 +9542,6 @@ header {
   display: flex;
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 20px;
   padding-right: 20px;
   background-color: #f3f3f3;
   z-index: 1000;
@@ -9557,7 +9557,7 @@ header {
   width: 365px;
 }
 .collapsible-nav .nav-link {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: #000000;
   text-transform: uppercase;
@@ -9605,6 +9605,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
+    padding-left: 20px;
   }
 }
 
@@ -9717,27 +9718,27 @@ main .time-line-item:last-child {
 }
 main .time-line-item .badge {
   padding: 6px 10px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1;
   border-radius: 2px;
   margin-bottom: 8px;
 }
 main .time-line-item-title {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1;
   margin-bottom: 2px;
 }
 main .time-line-item-subtitle {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.6;
-  color: #858585;
+  color: #6b6a6a;
   margin-bottom: 3px;
 }
 main .time-line-item-content {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.6;
   margin-bottom: 0;
@@ -9775,15 +9776,15 @@ main .service-card .service-icon {
   justify-content: center;
 }
 main .service-card .service-title {
-  font-size: 12px;
+  font-size: 17px;
   font-weight: bold;
   line-height: 1;
   margin-bottom: 8px;
 }
 main .service-card .service-description {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 300;
-  max-width: 180px;
+  max-width: 300px;
   margin-bottom: 0;
 }
 main .testimonial-section {
@@ -9928,7 +9929,7 @@ main .achievement-card-title {
   line-height: 1;
 }
 main .achievement-card-description {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0;
