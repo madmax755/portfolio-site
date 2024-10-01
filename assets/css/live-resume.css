@@ -10258,5 +10258,22 @@ main .location-section .map-wrapper {
     transform: rotate3d(0, 1, 0, 104deg);
   }
 }
+blog p {
+  font-size: 1.2rem;
+}
+blog h1 {
+  margin-bottom: 10px;
+}
+blog h2 {
+  font-size: 1.8rem;
+}
+blog li {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.katex {
+  font-size: 1em;
+}
 
 /*# sourceMappingURL=live-resume.css.map */
