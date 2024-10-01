@@ -9634,6 +9634,7 @@ main {
   flex-grow: 1;
   margin-left: 280px;
   margin-top: 56px;
+  margin-right: 40px;
 }
 
 main {
@@ -9645,7 +9646,8 @@ main {
   main {
     padding-left: 20px;
     padding-right: 20px;
-    margin-left: 0;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 main .section-title {
