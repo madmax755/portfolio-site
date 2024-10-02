@@ -10027,7 +10027,7 @@ main .blog-posts-wrapper .blog-post-thumbnail {
   margin-bottom: 13px;
 }
 main .blog-posts-wrapper .blog-post-title {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1;
   margin-bottom: 6px;
@@ -10035,7 +10035,7 @@ main .blog-posts-wrapper .blog-post-title {
 main .blog-posts-wrapper .blog-post-meta {
   color: #0067f6;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.2;
   margin-bottom: 0;
@@ -10267,13 +10267,16 @@ blog h1 {
 blog h2 {
   font-size: 1.8rem;
 }
+blog h3 {
+  font-size: 1.4rem;
+}
 blog li {
   font-size: 1.2rem;
   font-weight: 300;
 }
 
 .katex {
-  font-size: 1em;
+  font-size: 1.15em;
 }
 
 /*# sourceMappingURL=live-resume.css.map */

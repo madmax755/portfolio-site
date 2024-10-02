@@ -1,20 +1,24 @@
-    
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!--#include virtual="fragments/head.html" -->
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+        integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 
     <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+        integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg"
+        crossorigin="anonymous"></script>
 
     <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
         onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+
+
+    <!-- this order (katex before head fragments is important to be able to modify katex css) -->
+    <!--#include virtual="fragments/head.html" -->
 </head>
 
 <body>
@@ -29,9 +33,108 @@
             <!--#include virtual="fragments/aside.html" -->
         </aside>
         <main>
-            <h1>
-                Log returns vs. returns
-            </h1>
+            <blog>
+                <h1>
+                    Log Returns vs. Returns
+                </h1>
+                <p>In the world of finance, comparing asset performance isn't always straightforward. This post
+                    dives into the difference between returns and log returns, emphasising the nice mathematical
+                    properties of the latter.</p>
+                <h2>Simple Returns</h2>
+                <p>Raw prices can be misleading when comparing assets. A high-priced stock might appear impressive, but
+                    what if it's stagnant? Meanwhile, a lower-priced stock could be experiencing rapid growth. As an
+                    investor/trader you do not care what the exact price of an asset is, only where the price is
+                    relative to where it where it has been.
+                </p>
+                <p>Let's denote $p_t$ as the price of an asset at time t. The return ($r_t$) is calculated as:</p>
+                <p>$$ r_t = \frac{p_t - p_{t-1}}{p_{t-1}} = \frac{p_t}{p_{t-1}} - 1 $$</p>
+                <p>In essence, return is the relative change in price over a given time period. It's worth noting that
+                    $r_t > -1$, as prices can't go below zero (<a target="_blank"
+                        href="https://www.bbc.co.uk/news/business-52350082">usually</a>)
+                <p>
+                <p>For example, if $p_{t-1} = 100$ and $p_t = 110$, then $r_t = 0.1$, representing a 10% return.</p>
+
+
+                <h2>Log Returns</h2>
+                <p> Log returns aim to capture the same idea - change instead of price - but calculates it differently.
+                </p>
+                <p> Log returns are given by: $$ z_t := \log \left(1+r_t \right) = \log \left( \frac{p_t}{p_{t-1}}
+                    \right) $$</p>
+
+                <p>Log returns offer several compelling advantages:</p>
+                <ol>
+                    <li>Accurate approximation: For small returns, log returns closely approximate raw returns.</li>
+                    <li>Simplified compounding: Log returns can be easily summed over time periods.</li>
+                    <li>Infinite support: Unlike raw returns, log returns aren't bounded, resulting in greater symmetry.
+                    </li>
+                    <li>Normality: Assuming log-normally distributed prices, log returns follow a normal distribution.
+                    </li>
+                </ol>
+                <p>Let's explore each of these benefits in detail:</p>
+
+                <h3>Approximation of Raw Returns</h3>
+                <p>For small values of $ x $, $\log(1 + x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots \approx x$. This
+                    means that for typical daily returns, which are often
+                    close to zero, log returns provide a good approximation of raw returns while offering mathematical
+                    advantages.</p>
+
+                <h3>Simplified Compounding</h3>
+                <p>One of the most elegant properties of log returns is how they simplify the calculation of compounded
+                    returns.
+                </p>
+                <p>Say you want to find the return over a tradiing week with daily returns $ r_0 = 0.01, r_1 = 0.05, r_2
+                    = -0.2, r_3 = 0.1, r_4 = 0.12
+                    $.
+                </p>
+                <p>
+                    The price at the end of the week ($p_4$) can be calculated using each return: $$ p_4 =
+                    (p_0)(1+0.01)(1+0.05)(1-0.2)(1+0.1)(1+0.12) = 1.0452288 p_0$$
+                </p>
+                <p>
+                    Thus, $$ r_{0:4} = \frac{1.0452288p_0}{p_0} -1 = 0.0452288 $$
+                </p>
+                <p>
+                    From this we can see the general formula is $$ r_{0:T} = \prod_{t=0}^{T} (1+r_t) -1$$
+                </p>
+
+                <p>
+                    To get log returns we use the definition:
+                    $$ \begin{aligned}
+                    z_{0:T} &= \log (1+r_{0:T}) \\[0.5em]
+                    &= \log \left( 1 + \prod_{i=0}^{T} (1+r_i) - 1 \right) \\[0.5em]
+                    &= \sum_{t=0}^{T} \log(1+r_i)\\[0.5em]
+                    & =\sum_{t=1}^T \log \left(\frac{p_t}{p_{t-1}}\right) \\[0.5em]
+                    & =\sum_{t=1}^T\left[\log p_t-\log p_{t-1}\right] \\[0.5em]
+                    & =\log p_T-\log p_0\\[0.5em]
+                    &= \sum_{t=1}^T z_t
+                    \end{aligned} $$
+
+                </p>
+
+                <p>This property makes log returns particularly useful when dealing with high-frequency data or long
+                    time series, as we can just add the intermediate log returns to get the log returns over the whole
+                    period.</p>
+
+
+                <h3>Infinite Support</h3>
+                <p>Raw returns have a lower bound of -1 (100% loss), but no upper bound. Additionaly, it is not
+                    additively symmetric i.e. a doubling then halving in a stock price maintains the original price,
+                    despite the 1.0 return (doubling) being further from 0 than -0. (halving). Log returns, however,
+                    have infinite support in both directions, and are symmetric i.e. the log return for a doubling is
+                    the same distance from 0 as the log return from a halving. This symmetry is not only helpful for
+                    human intuition, but often aligns better with statistical models and risk management techniques.</p>
+
+                <h3>Symmetry</h3>
+                <p>Simple returns are not symmetric. In order to recover from a return of -0.9 you need a return of
+                    10.0. Log returns, however, solve this problem. The natural logarithm function accentuates small negative returns while squashing large positive returns </p>
+
+                <h2>Conclusion</h2>
+                <p>While raw returns are intuitive and easily understood, log returns offer significant mathematical
+                    advantages in financial analysis. They provide symmetry, align with common distributional
+                    assumptions, simplify compounding calculations, and closely approximate raw returns for typical
+                    values.</p>
+
+            </blog>
         </main>
     </div>
     <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
