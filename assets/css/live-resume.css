@@ -9458,10 +9458,8 @@ aside .widget .widget-title {
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-aside .widget .widget-content {
-  font-size: 15px;
-}
 aside .widget .widget-content p {
+  font-size: 17px;
   margin-bottom: 5px;
 }
 aside .widget .widget-content p:last-of-type {

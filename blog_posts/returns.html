@@ -117,22 +117,23 @@
 
 
                 <h3>Infinite Support</h3>
-                <p>Raw returns have a lower bound of -1 (100% loss), but no upper bound. Additionaly, it is not
-                    additively symmetric i.e. a doubling then halving in a stock price maintains the original price,
-                    despite the 1.0 return (doubling) being further from 0 than -0. (halving). Log returns, however,
-                    have infinite support in both directions, and are symmetric i.e. the log return for a doubling is
-                    the same distance from 0 as the log return from a halving. This symmetry is not only helpful for
-                    human intuition, but often aligns better with statistical models and risk management techniques.</p>
+                <p>Raw returns have a lower bound of -1 (100% loss), but no upper bound. Log returns, however,
+                    have infinite support in both directions.</p>
 
                 <h3>Symmetry</h3>
                 <p>Simple returns are not symmetric. In order to recover from a return of -0.9 you need a return of
-                    10.0. Log returns, however, solve this problem. The natural logarithm function accentuates small negative returns while squashing large positive returns </p>
+                    10.0. Log returns, however, solve this problem. The natural logarithm function accentuates small
+                    negative returns while squashing large positive returns. Because of this, the log return for a
+                    doubling is
+                    the same distance from 0 as the log return from a halving; returns are symmetric. This symmetry is
+                    not only helpful for
+                    human intuition, but often aligns better with statistical models and risk management techniques.
+                </p>
 
                 <h2>Conclusion</h2>
                 <p>While raw returns are intuitive and easily understood, log returns offer significant mathematical
-                    advantages in financial analysis. They provide symmetry, align with common distributional
-                    assumptions, simplify compounding calculations, and closely approximate raw returns for typical
-                    values.</p>
+                    advantages in financial analysis. They provide symmetry, simplify compounding calculations, and
+                    closely approximate raw returns for typical values.</p>
 
             </blog>
         </main>
