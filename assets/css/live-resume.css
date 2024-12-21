@@ -9472,6 +9472,7 @@ aside .widget.card {
 }
 aside .widget.card .widget-title {
   color: #0067f6;
+  font-size: 18px;
 }
 
 header {
@@ -9578,6 +9579,8 @@ main {
 }
 
 main {
+  display: flex;
+  justify-content: center;
   padding: 36px 60px 24px;
   background-color: #ffffff;
   border-top-right-radius: 10px;
@@ -9588,6 +9591,7 @@ main {
     padding-right: 20px;
     margin-left: 0px;
     margin-right: 0px;
+    margin-top: 110px;
   }
 }
 main .section-title {
@@ -9939,22 +9943,22 @@ main .portfolio-wrapper .portfolio-item-description {
 }
 main .blog-section {
   margin-bottom: 51px;
+  width: 100%;
 }
 main .blog-posts-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 main .blog-posts-wrapper .blog-post {
-  width: calc(33.33% - 15px);
+  width: min(470px, 33%);
   margin-bottom: 24px;
 }
 @media (max-width: 1200px) {
   main .blog-posts-wrapper .blog-post {
-    width: calc(50% - 8.5px);
+    width: 50%;
   }
 }
-@media (max-width: 575px) {
+@media (max-width: 950px) {
   main .blog-posts-wrapper .blog-post {
     width: 100%;
   }
@@ -9967,6 +9971,7 @@ main .blog-posts-wrapper .blog-post-link:hover {
 }
 main .blog-posts-wrapper .blog-post-thumbnail {
   width: 100%;
+  height: auto;
   margin-bottom: 13px;
 }
 main .blog-posts-wrapper .blog-post-title {
@@ -9974,6 +9979,7 @@ main .blog-posts-wrapper .blog-post-title {
   font-weight: 500;
   line-height: 1;
   margin-bottom: 6px;
+  width: 100%;
 }
 main .blog-posts-wrapper .blog-post-meta {
   color: #0067f6;
@@ -10201,17 +10207,24 @@ main .location-section .map-wrapper {
     transform: rotate3d(0, 1, 0, 104deg);
   }
 }
+blog {
+  width: 70%;
+}
 blog p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 blog h1 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 blog h2 {
   font-size: 1.8rem;
+  margin-bottom: 10px;
+  margin-top: 30px;
 }
 blog h3 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  margin-top: 30px;
 }
 blog li {
   font-size: 1.2rem;
@@ -10220,6 +10233,10 @@ blog li {
 
 .katex {
   font-size: 1.15em;
+}
+
+.katex-display {
+  font-size: 1.25em;
 }
 
 /*# sourceMappingURL=live-resume.css.map */

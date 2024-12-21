@@ -2,6 +2,8 @@ $duration: 300ms;
 $timing-fn: ease;
 
 main {
+    display: flex;
+    justify-content: center;
     padding: 36px 60px 24px;
     background-color: $white;
     border-top-right-radius: 10px;
@@ -11,6 +13,7 @@ main {
         padding-right: 20px;
         margin-left: 0px;
         margin-right: 0px;
+        margin-top: 110px;
     }
 
     .section-title {
@@ -407,22 +410,23 @@ main {
 
     .blog-section {
         margin-bottom: 51px;
+        width: 100%;
     }
 
     .blog-posts-wrapper {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
 
         .blog-post {
-            width: calc(33.33% - 15px);
+            width: min(470px, 33%);
             margin-bottom: 24px;
 
             @media (max-width: 1200px) {
-                width: calc(50% - 8.5px);
+                width: 50%;
             }
 
-            @media (max-width: 575px) {
+
+            @media (max-width: 950px) {
                 width: 100%;
             }
 
@@ -436,7 +440,9 @@ main {
 
             &-thumbnail {
                 width: 100%;
+                height: auto;
                 margin-bottom: 13px;
+
             }
 
             &-title {
@@ -444,6 +450,7 @@ main {
                 font-weight: $font-weight-medium;
                 line-height: 1;
                 margin-bottom: 6px;
+                width: 100%;
             }
 
             &-meta {
