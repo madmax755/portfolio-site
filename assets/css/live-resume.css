@@ -9472,7 +9472,7 @@ aside .widget.card {
 }
 aside .widget.card .widget-title {
   color: #0067f6;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 header {
@@ -9486,6 +9486,7 @@ header {
   padding-right: 20px;
   background-color: #f3f3f3;
   z-index: 1000;
+  margin-left: 20px;
 }
 
 .collapsible-nav {
@@ -9498,7 +9499,7 @@ header {
   width: 365px;
 }
 .collapsible-nav .nav-link {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #000000;
   text-transform: uppercase;
@@ -9573,7 +9574,7 @@ aside {
 
 main {
   flex-grow: 1;
-  margin-left: 280px;
+  margin-left: 310px;
   margin-top: 56px;
   margin-right: 40px;
 }

@@ -11,6 +11,7 @@ header {
     padding-right: 20px;
     background-color: $body-bg;
     z-index: 1000;
+    margin-left: 20px;
 }
 .collapsible-nav {
     display: flex;
@@ -23,7 +24,7 @@ header {
     }
 
     .nav-link {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: $font-weight-semibold;
         color: $black;
         text-transform: uppercase;
