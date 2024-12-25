@@ -418,11 +418,13 @@ main {
         flex-wrap: wrap;
 
         .blog-post {
-            width: min(470px, 33%);
+            width: min(470px, 31%);
             margin-bottom: 24px;
+            margin-left: 5px;
+            margin-right: 5px;
 
             @media (max-width: 1200px) {
-                width: 50%;
+                width: 48%;
             }
 
 
@@ -446,7 +448,7 @@ main {
             }
 
             &-title {
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: $font-weight-medium;
                 line-height: 1;
                 margin-bottom: 6px;
