@@ -20,23 +20,77 @@
             <section class="resume-section">
                 <h2 class="section-title">Projects</h2>
                 <ul class="time-line">
-                    <!-- C++ Neural Network Project -->
+
+                    <!-- C++ CNN Neural Network -->
                     <li class="time-line-item">
-                        <span class="badge badge-primary">Sep 2024 - Ongoing</span>
-                        <h3 class="time-line-item-title">C++ Neural Network (from scratch)</h3>
+                        <span class="badge badge-primary">Now 2024 - Ongoing</span>
+                        <h3 class="time-line-item-title">C++ Convolutional Neural Network (from scratch)</h3>
                         <p class="time-line-item-subtitle">
                             <a href="https://github.com/madmax755/Cpp-NN-from-scratch" target="_blank">github.com/madmax755/Cpp-NN-from-scratch</a>
                         </p>
                         <div class="time-line-item-content">
-                            <p>
-                            • Developed a MLP neural network framework in C++ from scratch, implementing core components such as backpropagation, multiple optimization algorithms (SGD, Nesterov momentum, Adam, AdamW), and activation functions (ReLU, sigmoid, softmax).
-                            </p>
-                            <p>
-                            • Implemented an efficient multi-threaded training framework to optimise batch gradient calculations, achieving a 78% speedup in training to reach 90% accuracy on a large-scale handwritten digit classification dataset.
-                            </p>
-                            <p>
-                            • Developed a Gated Recurrent Unit neural network framework in C++ from scratch, fully implementing backpropagation through time, multiple optimization algorithms (SGD, Momentum, Adam, AdamW) for efficient training, and currently working on evaluating performance for stock price prediction tasks.
-                            </p>
+                            <p>Custom implementation of a Convolutional Neural Network (CNN) for image classification without ML libraries.</p>
+                            <p><u>Features:</u></p>
+                            <ul>
+                                <li>Convolutional layers with configurable kernels</li>
+                                <li>Pooling layers</li>
+                                <li>Dense layers for classification</li>
+                                <li>Tensor3D class for efficient 3D data handling</li>
+                                <li>AdamW optimiser</li>
+                                <li>Model serialisation (save/load functionality)</li>
+                            </ul>
+                            <p><u>Results:</u></p>
+                            <ul>
+                                <li>Trained model on MNIST dataset (+augmentation) - see <a href="https://maxkendall.com/cnn_demo" target="_blank">demo</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- C++ GRU Neural Network -->
+                    <li class="time-line-item">
+                        <span class="badge badge-primary">Oct 2024 - Nov 2024</span>
+                        <h3 class="time-line-item-title">C++ Gated Recurrent Unit Neural Network (from scratch)</h3>
+                        <p class="time-line-item-subtitle">
+                            <a href="https://github.com/madmax755/Cpp-NN-from-scratch" target="_blank">github.com/madmax755/Cpp-NN-from-scratch</a>
+                        </p>
+                        <div class="time-line-item-content">
+                            <p>Custom implementation of Gated Recurrent Unit (GRU) architecture for time series sequence processing without ML libraries.</p>
+                            <p><u>Features:</u></p>
+                            <ul>
+                                <li>GRU cell implementation with MLP output layers</li>
+                                <li>Configurable input, hidden, and output dimensions</li>
+                                <li>AdamW optimiser</li>
+                                <li>Financial metrics for stock prediction (profit/loss, directional accuracy)</li>
+                            </ul>
+                            <p><u>Results:</u></p>
+                            <ul>
+                                <li>todo</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- C++ MLP Neural Network Project -->
+                    <li class="time-line-item">
+                        <span class="badge badge-primary">Sep 2024 - Oct 2024</span>
+                        <h3 class="time-line-item-title">C++ MLP Neural Network (from scratch)</h3>
+                        <p class="time-line-item-subtitle">
+                            <a href="https://github.com/madmax755/Cpp-NN-from-scratch" target="_blank">github.com/madmax755/Cpp-NN-from-scratch</a>
+                        </p>
+                        <div class="time-line-item-content">
+                            <p>Custom implementation of a feedforward MLP neural network without external ML libraries.</p>
+                            <p><u>Features:</u></p>
+                            <ul>
+                                <li>Flexible network topology with configurable layer sizes</li>
+                                <li>Multiple activation functions (ReLU, Sigmoid, Softmax)</li>
+                                <li>Advanced optimisers (SGD, SGD+Momentum, NAG, Adam, AdamW)</li>
+                                <li>Multi-threaded training for improved performance</li>
+                                <li>Model serialisation (save/load functionality)</li>
+                                <li>Evaluation metrics (accuracy, precision, recall, F1 score)</li>
+                            </ul>
+                            <p><u>Results:</u></p>
+                            <ul>
+                                <li>Acheived 91% peak accuracy on a large-scale handwritten digit classification dataset (MNIST).</li>
+                            </ul>
                         </div>
                     </li>
 
