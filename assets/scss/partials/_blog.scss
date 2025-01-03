@@ -1,5 +1,11 @@
 blog {
     width: 70%;
+
+    @media (max-width: 767px) {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
     p {
         font-size: 1.3rem;
     }
@@ -27,9 +33,34 @@ blog {
 }
 
 .katex {
-    font-size: 1.15em;
+    font-size: 1.1em;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5em 0;
     font-size: 1.25em;
+
+    // make display math smaller on mobile
+    @media (max-width: 767px) {
+        font-size: 1.1em;
+    }
+}
+
+/* ensure all math content wraps properly */
+.katex-html {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* ensure matrices and other large elements scale down */
+.katex .base {
+    max-width: 100%;
+    word-break: break-word;
 }

@@ -9547,7 +9547,6 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    padding-left: 20px;
   }
 }
 
@@ -10225,6 +10224,12 @@ main .location-section .map-wrapper {
 blog {
   width: 70%;
 }
+@media (max-width: 767px) {
+  blog {
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
 blog p {
   font-size: 1.3rem;
 }
@@ -10247,11 +10252,36 @@ blog li {
 }
 
 .katex {
-  font-size: 1.15em;
+  font-size: 1.1em;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5em 0;
   font-size: 1.25em;
+}
+@media (max-width: 767px) {
+  .katex-display {
+    font-size: 1.1em;
+  }
+}
+
+/* ensure all math content wraps properly */
+.katex-html {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* ensure matrices and other large elements scale down */
+.katex .base {
+  max-width: 100%;
+  word-break: break-word;
 }
 
 /*# sourceMappingURL=live-resume.css.map */
