@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+        integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+        integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg"
+        crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+
+
+    <!-- this order (katex before head fragments is important to be able to modify katex css) -->
+    <!--#include virtual="fragments/head.html" -->
+
+</head>
+
+<body>
+    <header>
+        <!--#include virtual="fragments/header.html" -->
+        <script>
+            document.getElementById("blog-link").classList.add('active');
+        </script>
+    </header>
+    <div class="content-wrapper">
+        <aside>
+            <!--#include virtual="fragments/aside.html" -->
+        </aside>
+        <main>
+            <blog><h1>Setting Up a Web Server on Raspberry Pi with Nginx and Cloudflare</h1>
+<p>In this guide, we'll walk through the complete process of setting up a web server on a Raspberry Pi Zero W 2 (or any other), configuring Nginx, and connecting it to the internet securely using Cloudflare.</p>
+<p>By the end of this guide, you will have a fully functional static website hosted on your Raspberry Pi.</p>
+<p>We have to two things, make sure requests are routed to the raspberry pi and make sure the raspberry pi can serve the files requested. The process of doing this is can be seen in the diagram below.</p>
+<p><img src="assets/images/request-routing.png" style="display: block; margin: auto; width: 100%;"></p>
+<h2>Installing Raspberry Pi OS</h2>
+<p>The first step is to set up your Raspberry Pi with a headless (no GUI) installation of Raspberry Pi OS:</p>
+<ol>
+<li>Download the Raspberry Pi Imager from the official website</li>
+<li>Insert your microSD card into your computer</li>
+<li>Open Raspberry Pi Imager and select "Raspberry Pi OS Lite (64-bit)" as the operating system</li>
+<li>Click on the settings gear icon and configure:<ul>
+<li>Set hostname (e.g., <code>webserver</code>)</li>
+<li>Enable SSH</li>
+<li>Set username and password</li>
+<li>Configure WiFi credentials</li>
+<li>Set a static IP address for your local network</li>
+</ul>
+</li>
+<li>Write the image to the SD card</li>
+<li>Insert the SD card into your Raspberry Pi and power it on</li>
+</ol>
+<p>You can now connect to your Pi via SSH:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-bash">ssh username@hostname.local
+</code></pre></div></p>
+<h2>Setting Up Nginx</h2>
+<p>The role of Nginx is to take the requests sent the the pi and work out the appropriate files to send as a response. Here's how to install and configure it:</p>
+<ol>
+<li>
+<p>Update your system first:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-bash">sudo apt update
+sudo apt upgrade -y
+</code></pre></div></p>
+</li>
+<li>
+<p>Install Nginx:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-bash">sudo apt install nginx -y
+</code></pre></div></p>
+</li>
+<li>
+<p>Note the locations of important Nginx files:<br />
+- Configuration files: <code>/etc/nginx/</code><br />
+- Main config: <code>/etc/nginx/nginx.conf</code><br />
+- Site configurations: <code>/etc/nginx/sites-available/</code> and <code>/etc/nginx/sites-enabled/</code><br />
+- Web root: <code>/var/www/html/</code></p>
+</li>
+<li>
+<p>Create a new site configuration:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-bash">sudo nano /etc/nginx/sites-available/mysite
+</code></pre></div></p>
+</li>
+</ol>
+<p>To serve a basic static web page, add the following configuration:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-nginx">server {
+    # Listen on port 80 (HTTP)
+    listen 80;
+    
+    # Define which domain names this config block applies to
+    # This server block will handle requests for both the root domain and www subdomain
+    server_name yourdomain.com www.yourdomain.com;
+    
+    # Set the root directory where your website files are stored
+    # This is where Nginx will look for files to serve
+    root /var/www/mysite;
+    
+    # Specify default files to look for when a directory is requested
+    # If someone visits yourdomain.com/, Nginx will try to serve yourdomain.com/index.html
+    index index.html;
+
+    # Location block for handling requests to the root path (/)
+    location / {
+        # try_files directive tells Nginx what to do when processing requests:
+        # $uri - try to serve the exact URI requested
+        # $uri/ - if $uri isn't found, try it as a directory and look for index file
+        # =404 - if neither is found, return a 404 error
+        try_files $uri $uri/ =404;
+    }
+}
+</code></pre></div></p>
+<p>Let's break down what each part of this configuration does:</p>
+<ol>
+<li>
+<p><code>server { ... }</code> - This defines a server block. You can have multiple server blocks to handle different domains.</p>
+</li>
+<li>
+<p><code>listen 80;</code> - Tells Nginx to listen for incoming HTTP connections on port 80. This is the default port for HTTP traffic.</p>
+</li>
+<li>
+<p><code>server_name</code> - Specifies which domain names this server block should respond to. When Nginx receives a request, it looks at the Host header to match it with the appropriate server block.</p>
+</li>
+<li>
+<p><code>root</code> - Sets the document root directory. All relative paths in the configuration will be relative to this directory. For example, if someone requests yourdomain.com/images/pic.jpg, Nginx will look for the file at /var/www/mysite/images/pic.jpg. Any location blocks append their specified path to this root.</p>
+</li>
+<li>
+<p><code>index</code> - Lists the files to use as an index page when a directory is requested. Nginx will look for these files in the order specified.</p>
+</li>
+<li>
+<p><code>location / { ... }</code> - This block defines how Nginx handles requests matching the specified path (in this case, the root path /). You can have multiple location blocks for different paths.</p>
+</li>
+<li>
+<p><code>try_files</code> - This directive is crucial for proper URL handling:</p>
+<ul>
+<li>First tries the exact URI requested</li>
+<li>If that fails, tries treating it as a directory and looks for an index file</li>
+<li>If both fail, returns a 404 error</li>
+</ul>
+</li>
+</ol>
+<ol start="5">
+<li>
+<p>Create your website directory and add some content:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-bash">sudo mkdir -p /var/www/mysite
+sudo chown -R $USER /var/www/mysite
+echo "<h1>Hello from my Raspberry Pi!</h1>" > /var/www/mysite/index.html
+</code></pre></div></p>
+</li>
+<li>
+<p>Enable the site:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-bash">sudo ln -s /etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+</code></pre></div></p>
+</li>
+</ol>
+<h2>Port Forwarding Setup</h2>
+<p>To make your web server accessible from the internet:</p>
+<ol>
+<li>Log into your router's admin interface</li>
+<li>Navigate to the port forwarding section</li>
+<li>Add a new port forwarding rule:<ul>
+<li>External port: 80 (HTTP) and 443 (HTTPS)</li>
+<li>Internal IP: Your Pi's static IP address</li>
+<li>Internal port: 80 and 443</li>
+<li>Protocol: TCP</li>
+</ul>
+</li>
+</ol>
+<h2>Cloudflare DNS Configuration</h2>
+<p>Cloudflare provides free DNS management and HTTPS encryption:</p>
+<ol>
+<li>Sign up for a Cloudflare account</li>
+<li>Add your domain to Cloudflare</li>
+<li>Update your domain's nameservers to Cloudflare's</li>
+<li>Add DNS records:<ul>
+<li>Type: A</li>
+<li>Name: @ (root domain)</li>
+<li>Value: Your public IP</li>
+<li>Proxy status: Proxied</li>
+</ul>
+</li>
+</ol>
+<h2>Automatic DNS Updates</h2>
+<p>Since most home internet connections have dynamic IP addresses, we need a script to automatically update our DNS records when the IP changes. Here's how the update process works:</p>
+<p>Here's the Python script that handles this process:</p>
+<p><div class="code-block-wrapper"><pre class="line-numbers"><code class="language-python">import requests
+import json
+
+# Cloudflare API details
+api_token = "your_api_token"
+zone_id = "your_zone_id"
+record_id = "your_record_id"
+domain = "yourdomain.com"
+
+# Get public IP
+response = requests.get("https://api.ipify.org?format=json")
+public_ip = response.json()['ip']
+
+# Cloudflare API URL
+url = f"https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records/{record_id}"
+
+# DNS record data
+data = {
+    "type": "A",
+    "name": domain,
+    "content": public_ip,
+    "ttl": 120,
+    "proxied": True
+}
+
+# Headers for the request
+headers = {
+    "Authorization": f"Bearer {api_token}",
+    "Content-Type": "application/json"
+}
+
+# Update the DNS record
+response = requests.put(url, headers=headers, json=data)
+
+if response.status_code == 200:
+    print(f"DNS record updated successfully to {public_ip}")
+else:
+    print(f"Failed to update DNS record: {response.text}")
+</code></pre></div></p>
+<p>To automate this script:</p>
+<ol>
+<li>Save it as <code>update_dns.py</code></li>
+<li>
+<p>Make it executable:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-bash">chmod +x update_dns.py
+</code></pre></div></p>
+</li>
+<li>
+<p>Add it to crontab to run every hour:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-bash">crontab -e
+</code></pre></div></p>
+</li>
+<li>
+<p>Add the line:<br />
+<div class="code-block-wrapper"><pre class="line-numbers"><code class="language-">0 * * * * /usr/bin/python3 /path/to/update_dns.py
+</code></pre></div></p>
+</li>
+</ol>
+<h2>Conclusion</h2>
+<p>You now have a fully functional web server running on a Raspberry Pi, with:<br />
+- Nginx serving your websites<br />
+- Port forwarding enabling internet access<br />
+- Cloudflare providing DNS management and HTTPS<br />
+- Automatic DNS updates for dynamic IP addresses<br />
+- Basic security measures in place</p>
+<p>Remember to regularly backup your configuration files and keep your system updated. Happy hosting!</p></blog>
+        </main>
+    </div>
+    <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendors/@popperjs/core/dist/umd/popper-base.min.js"></script>
+    <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/live-resume.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <!-- Add languages you need, for example: -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+</body>
+
+</html>
