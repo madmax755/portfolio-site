@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ChevronDown, Code, Database, Server } from 'lucide-react'
+import { ChevronDown, Brain, MessageSquareText, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 function Hero() {
@@ -25,10 +25,19 @@ function Hero() {
     },
   }
 
-  const skills = [
-    { icon: Code, label: 'Full-Stack Development' },
-    { icon: Database, label: 'Data Engineering' },
-    { icon: Server, label: 'System Architecture' },
+  const demos = [
+    { 
+      icon: Brain, 
+      label: 'CNN Demo', 
+      description: 'Handwritten digit recognition',
+      href: '/cnn_demo' 
+    },
+    { 
+      icon: MessageSquareText, 
+      label: 'Sentiment Analysis', 
+      description: 'Real-time text sentiment',
+      href: '/sentiment_demo' 
+    },
   ]
 
   return (
@@ -64,21 +73,30 @@ function Hero() {
             </p>
           </motion.div>
 
-          {/* Skills Grid */}
+          {/* Interactive Demos */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center gap-6 py-8"
+            className="flex flex-wrap justify-center gap-4 py-8"
           >
-            {skills.map((skill) => (
-              <motion.div
-                key={skill.label}
-                className="flex items-center space-x-3 bg-gray-800/60 backdrop-blur-sm border border-gray-600/50 rounded-full px-6 py-3 hover:border-emerald-500/70 hover:bg-gray-800/80 transition-all group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            {demos.map((demo) => (
+              <motion.a
+                key={demo.label}
+                href={demo.href}
+                className="flex items-center space-x-4 bg-gray-800/60 backdrop-blur-sm border border-gray-600/50 rounded-xl px-5 py-4 hover:border-emerald-500/70 hover:bg-gray-800/80 transition-all group"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <skill.icon className="text-emerald-400 group-hover:text-emerald-300 transition-colors" size={20} />
-                <span className="text-gray-100 font-medium">{skill.label}</span>
-              </motion.div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg group-hover:bg-emerald-500/20 transition-colors">
+                  <demo.icon className="text-emerald-400 group-hover:text-emerald-300 transition-colors" size={24} />
+                </div>
+                <div className="text-left">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-gray-100 font-semibold">{demo.label}</span>
+                    <ExternalLink size={14} className="text-gray-500 group-hover:text-emerald-400 transition-colors" />
+                  </div>
+                  <span className="text-gray-400 text-sm">{demo.description}</span>
+                </div>
+              </motion.a>
             ))}
           </motion.div>
 

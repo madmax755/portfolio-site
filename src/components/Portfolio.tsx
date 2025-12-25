@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Calendar, ExternalLink, Github, MapPin, Mail, Phone } from 'lucide-react'
+import { Calendar, ExternalLink, Github, MapPin, Mail, Phone, Play } from 'lucide-react'
 
 function Portfolio() {
   const containerVariants = {
@@ -64,6 +64,7 @@ function Portfolio() {
       period: 'Nov 2024 – Dec 2024',
       title: 'Convolutional Neural Network (from scratch in C++)',
       link: 'https://github.com/madmax755/cnn-from-scratch',
+      demo: '/cnn_demo',
       description: 'Built a CNN library from scratch in C++ for image classification.',
       achievements: [
         'Implemented convolutional, pooling, and dense layers',
@@ -133,29 +134,45 @@ function Portfolio() {
                       {exp.period}
                     </span>
                   </div>
-                  {exp.link && (
-                    <div className="flex space-x-2">
-                      {exp.link.includes('github') ? (
+                  {(exp.link || exp.demo) && (
+                    <div className="flex space-x-1">
+                      {exp.demo && (
                         <motion.a
-                          href={exp.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-emerald-400 transition-colors p-2"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
+                          href={exp.demo}
+                          className="flex items-center space-x-1 text-gray-400 hover:text-emerald-400 transition-colors px-2 py-1 rounded-md hover:bg-emerald-500/10"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          title="Try Demo"
                         >
-                          <Github size={20} />
+                          <Play size={16} fill="currentColor" />
+                          <span className="text-xs font-medium">Demo</span>
                         </motion.a>
-                      ) : (
+                      )}
+                      {exp.link && exp.link.includes('github') && (
                         <motion.a
                           href={exp.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-emerald-400 transition-colors p-2"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
+                          className="flex items-center space-x-1 text-gray-400 hover:text-emerald-400 transition-colors px-2 py-1 rounded-md hover:bg-emerald-500/10"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          title="View Source"
                         >
-                          <ExternalLink size={20} />
+                          <Github size={16} />
+                          <span className="text-xs font-medium">Code</span>
+                        </motion.a>
+                      )}
+                      {exp.link && !exp.link.includes('github') && (
+                        <motion.a
+                          href={exp.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-1 text-gray-400 hover:text-emerald-400 transition-colors px-2 py-1 rounded-md hover:bg-emerald-500/10"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <ExternalLink size={16} />
+                          <span className="text-xs font-medium">Visit</span>
                         </motion.a>
                       )}
                     </div>
