@@ -56,7 +56,7 @@ function Hero() {
           >
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 p-1 animate-glow">
               <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
-                <img src="/public/profile.jpg" alt="Max Kendall" className="w-full h-full object-cover rounded-full" />
+                <img src="/profile.jpg" alt="Max Kendall" className="w-full h-full object-cover rounded-full" />
               </div>
             </div>
           </motion.div>
