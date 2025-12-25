@@ -129,6 +129,7 @@ function SentimentDemo() {
         <p className="text-gray-100 text-lg max-w-2xl mx-auto">
           Enter any text and watch a neural network analyse its emotional tone.
           This model was built from scratch using a simple recurrent neural network (GRU).
+          As you will be able to see, it's not very accurate, and is a good stepping stone to a transformer model.
         </p>
       </motion.header>
 

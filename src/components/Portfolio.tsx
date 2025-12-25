@@ -37,28 +37,23 @@ function Portfolio() {
       ]
     },
     {
-      period: 'Feb 2025 – May 2025',
+      period: 'Feb 2025 – Ongoing',
       title: 'Full-stack Car Inventory & Invoicing System',
-      link: '#',
-      description: 'Built a complete vehicle inventory and invoicing system.',
+      description: 'Developed, sold, and provided support for a full-stack vehicle inventory & invoicing platform with a Python FastAPI backend and a custom React frontend.',
       achievements: [
-        'FastAPI backend with SQLite database',
-        'Custom JS/HTML/CSS frontend with responsive layout',
-        'Automated data ingestion using a Selenium scraper with cron scheduling',
-        'PDF invoice generation with digital signing for secure payment tracking'
+        'Automated data ingestion by building a Selenium-based web scraper with scheduled cron jobs to update car listings',
+        'Implemented invoicing workflows including PDF generation and digital signing, enabling secure payment tracking and client-ready documentation'
       ]
     },
     {
       period: 'Aug 2024 – Ongoing',
       title: 'Self-hosted Server',
       link: 'https://maxkendall.com',
-      description: 'Self-hosting multiple services and applications on a Raspberry Pi Zero W.',
+      description: 'Hosting multiple web servers, a DNS server, a file server, a GitHub runner, and various other services.',
       achievements: [
-        'Hosting portfolio, Minesweeper, and personal todo-list web apps',
-        'Configured Nginx reverse proxy, Cloudflare DDNS via API, and CI/CD with GitHub Actions',
-        'Implemented SSH access with keys + fail2ban for security',
-        'Automated off-site snapshot backups for resilience',
-        'Monitoring with Prometheus + Grafana for remote alerts'
+        'Implemented SSH safely using keys and fail2ban for security',
+        'Set up automated off-site system snapshot backups',
+        'Configured Prometheus + Grafana for remote system monitoring and alerts'
       ]
     },
     {
