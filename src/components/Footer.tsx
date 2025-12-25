@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
@@ -11,10 +12,10 @@ function Footer() {
   ]
 
   const footerLinks = [
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'CNN Demo', href: '/cnn_demo' },
-    { name: 'Minesweeper', href: '/minesweeper' },
+    { name: 'Portfolio', to: '/portfolio' },
+    { name: 'Blog', to: '/blog' },
+    { name: 'CNN Demo', to: '/cnn-demo' },
+    { name: 'Sentiment Demo', to: '/sentiment-demo' },
   ]
 
   return (
@@ -47,12 +48,12 @@ function Footer() {
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.to}
                     className="text-gray-100 hover:text-emerald-400 transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

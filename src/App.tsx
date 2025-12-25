@@ -7,6 +7,8 @@ import Portfolio from './components/Portfolio'
 import Blog from './components/Blog'
 import Footer from './components/Footer'
 import BlogPost from './components/BlogPost'
+import CNNDemo from './components/CNNDemo'
+import SentimentDemo from './components/SentimentDemo'
 
 // Lazy load MDX blog posts for better performance
 const CnnBackpropagation = lazy(() => import('./content/blog/cnn-backpropagation.mdx'))
@@ -51,6 +53,8 @@ function App() {
             <Route path="/" element={<Hero />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/cnn-demo" element={<CNNDemo />} />
+            <Route path="/sentiment-demo" element={<SentimentDemo />} />
             <Route 
               path="/blog/cnn-backpropagation" 
               element={

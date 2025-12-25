@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Calendar, ExternalLink, Github, MapPin, Mail, Phone, Play } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 function Portfolio() {
   const containerVariants = {
@@ -64,7 +65,7 @@ function Portfolio() {
       period: 'Nov 2024 – Dec 2024',
       title: 'Convolutional Neural Network (from scratch in C++)',
       link: 'https://github.com/madmax755/cnn-from-scratch',
-      demo: '/cnn_demo',
+      demo: '/cnn-demo',
       description: 'Built a CNN library from scratch in C++ for image classification.',
       achievements: [
         'Implemented convolutional, pooling, and dense layers',
@@ -78,6 +79,7 @@ function Portfolio() {
       period: 'Sep 2024 – Oct 2024',
       title: 'Feedforward Neural Network (from scratch in C++)',
       link: 'https://github.com/madmax755/mlp-from-scratch',
+      demo: '/sentiment-demo',
       description: 'Implemented a classic MLP neural network entirely in C++ without ML libraries.',
       achievements: [
         'Highly configurable network topologies with multiple activation functions (ReLU, Sigmoid, Softmax)',
@@ -137,16 +139,14 @@ function Portfolio() {
                   {(exp.link || exp.demo) && (
                     <div className="flex space-x-1">
                       {exp.demo && (
-                        <motion.a
-                          href={exp.demo}
-                          className="flex items-center space-x-1 text-gray-400 hover:text-emerald-400 transition-colors px-2 py-1 rounded-md hover:bg-emerald-500/10"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
+                        <Link
+                          to={exp.demo}
+                          className="flex items-center space-x-1 text-gray-400 hover:text-emerald-400 transition-colors px-2 py-1 rounded-md hover:bg-emerald-500/10 hover:scale-105 active:scale-95"
                           title="Try Demo"
                         >
                           <Play size={16} fill="currentColor" />
                           <span className="text-xs font-medium">Demo</span>
-                        </motion.a>
+                        </Link>
                       )}
                       {exp.link && exp.link.includes('github') && (
                         <motion.a

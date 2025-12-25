@@ -35,7 +35,7 @@ function Blog() {
   ]
 
   const recentUpdates = [
-    { title: 'CNN Demo', link: '/cnn_demo', type: 'Project', isExternal: true },
+    { title: 'CNN Demo', link: '/cnn-demo', type: 'Project', isExternal: false },
     { title: 'Backpropagation for CNNs', link: '/blog/cnn-backpropagation', type: 'Article', isExternal: false }
   ]
 
