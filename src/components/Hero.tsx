@@ -1,0 +1,120 @@
+import { motion } from 'framer-motion'
+import { ChevronDown, Code, Database, Server } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
+function Hero() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  }
+
+  const skills = [
+    { icon: Code, label: 'Full-Stack Development' },
+    { icon: Database, label: 'Data Engineering' },
+    { icon: Server, label: 'System Architecture' },
+  ]
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 sm:pt-0">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="space-y-8"
+        >
+          {/* Profile Image */}
+          <motion.div
+            variants={itemVariants}
+            className="relative inline-block"
+          >
+            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 p-1 animate-glow">
+              <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
+                <img src="/public/profile.jpg" alt="Max Kendall" className="w-full h-full object-cover rounded-full" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Main Heading */}
+          <motion.div variants={itemVariants} className="space-y-4">
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-500 bg-clip-text text-transparent">
+                Max Kendall
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-100 font-light">
+              Software Engineer & Data Enthusiast
+            </p>
+          </motion.div>
+
+          {/* Skills Grid */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap justify-center gap-6 py-8"
+          >
+            {skills.map((skill) => (
+              <motion.div
+                key={skill.label}
+                className="flex items-center space-x-3 bg-gray-800/60 backdrop-blur-sm border border-gray-600/50 rounded-full px-6 py-3 hover:border-emerald-500/70 hover:bg-gray-800/80 transition-all group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <skill.icon className="text-emerald-400 group-hover:text-emerald-300 transition-colors" size={20} />
+                <span className="text-gray-100 font-medium">{skill.label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <Link to="/portfolio" className="btn-primary w-full sm:w-auto text-center">
+              View My Work
+            </Link>
+            <a
+              href="mailto:max@maxkendall.com"
+              className="btn-secondary w-full sm:w-auto text-center"
+            >
+              Get In Touch
+            </a>
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            variants={itemVariants}
+            className="pt-16"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="inline-block text-gray-300 hover:text-emerald-400 transition-colors cursor-pointer"
+            >
+              <ChevronDown size={32} />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+export default Hero

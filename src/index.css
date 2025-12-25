@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css');
+@import url('https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-vsc-dark-plus.min.css');
+
+@import "tailwindcss";
+
+html {
+  font-family: 'Mukta', system-ui, sans-serif;
+}
+
+.nav-link {
+  color: #d1d5db;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #34d399;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #10b981;
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Button Styles */
+.btn-primary {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3), 0 2px 4px -1px rgba(16, 185, 129, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4), 0 4px 6px -2px rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: #10b981;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid #10b981;
+}
+
+.btn-secondary:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #34d399;
+  color: #34d399;
+  transform: translateY(-2px);
+}
+
+/* Card Styles */
+.card {
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Blog Post Prose Styles */
+.prose {
+  color: #f3f4f6;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.prose h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.prose h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.prose h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #d1d5db;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+  color: #e5e7eb;
+}
+
+.prose a {
+  color: #34d399;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: #6ee7b7;
+}
+
+.prose strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.prose em {
+  color: #d1d5db;
+  font-style: italic;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  color: #e5e7eb;
+}
+
+.prose ul li::marker {
+  color: #10b981;
+}
+
+.prose ol li::marker {
+  color: #10b981;
+}
+
+.prose blockquote {
+  border-left: 4px solid #10b981;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #d1d5db;
+  font-style: italic;
+  background: rgba(16, 185, 129, 0.05);
+  padding: 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.prose code:not(pre code) {
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.prose pre {
+  background: #1e1e1e !important;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin: 1.5rem -1rem;
+  overflow-x: auto;
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  -webkit-overflow-scrolling: touch;
+  max-width: calc(100% + 2rem);
+}
+
+@media (max-width: 640px) {
+  .prose pre {
+    margin: 1rem -0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    max-width: calc(100% + 1rem);
+  }
+}
+
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.prose img {
+  border-radius: 0.75rem;
+  margin: 1.5rem auto;
+  max-width: 100%;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid rgba(75, 85, 99, 0.3);
+  margin: 2rem 0;
+}
+
+/* KaTeX Math Styling */
+.prose .katex-display {
+  margin: 1.5rem -1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem;
+  background: rgba(17, 24, 39, 0.5);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose .katex {
+  color: #e5e7eb;
+  font-size: 1em;
+}
+
+@media (max-width: 640px) {
+  .prose .katex {
+    font-size: 0.85em;
+  }
+
+  .prose .katex-display {
+    margin: 1rem -0.5rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Table Styles */
+.prose table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+}
+
+.prose th {
+  background: rgba(16, 185, 129, 0.1);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid rgba(16, 185, 129, 0.3);
+}
+
+.prose td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+  color: #e5e7eb;
+}
