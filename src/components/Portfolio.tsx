@@ -51,9 +51,10 @@ function Portfolio() {
       link: 'https://maxkendall.com',
       description: 'Hosting multiple web servers, a DNS server, a file server, a GitHub runner, and various other services.',
       achievements: [
-        'Implemented SSH safely using keys and fail2ban for security',
-        'Set up automated off-site system snapshot backups',
-        'Configured Prometheus + Grafana for remote system monitoring and alerts'
+        'Set up Nginx reverse proxy, Cloudflare DDNS via API, and CI/CD with GitHub Actions',
+        'Implemented SSH access with keys + fail2ban for security',
+        'Automated off-site snapshot backups for resilience',
+        'Configured Prometheus + Grafana for remote alerts'
       ]
     },
     {
@@ -66,9 +67,9 @@ function Portfolio() {
         'Implemented convolutional, pooling, and dense layers',
         'Custom Tensor3D class for efficient data handling',
         'Custom optimisers (SGD, Momentum, Adam, AdamW with gradient clipping)',
-        'Model serialisation (save/load)'
+        'Model serialisation (save/load)',
+        'Achieved 99.4% accuracy on MNIST with augmentation'
       ],
-      results: 'Achieved 99.4% accuracy on MNIST with augmentation'
     },
     {
       period: 'Sep 2024 – Oct 2024',
@@ -80,9 +81,9 @@ function Portfolio() {
         'Highly configurable network topologies with multiple activation functions (ReLU, Sigmoid, Softmax)',
         'Optimisers: SGD, Momentum, NAG, Adam, AdamW',
         'Multi-threaded training support',
-        'Model persistence and evaluation metrics'
+        'Model persistence and evaluation metrics',
+        'Reached 91% accuracy on MNIST digit classification'
       ],
-      results: 'Reached 91% accuracy on MNIST digit classification'
     }
   ]
 
@@ -196,14 +197,6 @@ function Portfolio() {
                     </motion.li>
                   ))}
                 </ul>
-
-                {exp.results && (
-                  <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-4">
-                    <p className="text-emerald-300 font-semibold">
-                      <span className="text-emerald-400">Results:</span> {exp.results}
-                    </p>
-                  </div>
-                )}
               </motion.div>
             ))}
           </motion.div>
