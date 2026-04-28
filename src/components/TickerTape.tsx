@@ -3,11 +3,12 @@ import { useReducedMotion } from 'framer-motion'
 const TICKER_ITEMS = [
   'Max Kendall',
   'Software engineer',
-  'C++ & systems',
+  'Rust & systems',
   'Machine learning',
+  'Python & ML',
+  'Maths nerd',
   'React & TypeScript',
-  'CNN from scratch',
-  'Open to opportunities',
+  'Codex > Claude',
   'United Kingdom',
 ]
 
