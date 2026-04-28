@@ -332,6 +332,16 @@ body {
   color: #d2d7e3;
 }
 
+/* Blog article body: slightly higher contrast on frosted panel */
+.blog-reading-panel.prose p,
+.blog-reading-panel.prose li {
+  color: #e0e5ef;
+}
+
+.blog-reading-panel.prose h3 {
+  color: #b8c0d0;
+}
+
 /* Infinite tickertape — solid colours only */
 @keyframes ticker-marquee {
   from {
