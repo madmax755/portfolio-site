@@ -298,7 +298,7 @@ function CNNDemo() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
       >
         <div className="card p-6 sm:p-8 border-2 border-electric/30 bg-panel-bright/20">
           {isLoading ? (
@@ -307,7 +307,7 @@ function CNNDemo() {
               <p className="text-cream/60 font-semibold">Loading neural network model…</p>
             </div>
           ) : (
-            <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-stretch justify-center">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-stretch md:justify-between">
               <div className="relative">
                 <canvas
                   ref={canvasRef}
@@ -335,7 +335,7 @@ function CNNDemo() {
                 </motion.button>
               </div>
 
-              <div className="w-[280px] min-h-[284px] bg-panel border-2 border-cream/15 p-4 flex flex-col shadow-[6px_6px_0_rgba(255,15,127,0.25)]">
+              <div className="w-[280px] min-h-[284px] bg-panel border-2 border-cream/15 p-4 flex flex-col shadow-[6px_6px_0_rgba(255,15,127,0.25)] md:ml-auto">
                 <h2 className="font-display font-bold text-sm uppercase tracking-[0.2em] text-electric mb-4">Predictions</h2>
                 <div className="flex-1 flex flex-col justify-between gap-2">
                   {predictions.length === 0 ? (

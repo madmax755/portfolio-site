@@ -356,10 +356,6 @@ body {
   animation: ticker-marquee 42s linear infinite;
 }
 
-.ticker-track:hover {
-  animation-play-state: paused;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .ticker-track {
     animation: none;
