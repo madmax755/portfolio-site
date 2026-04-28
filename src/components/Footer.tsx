@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Mail, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 function Footer() {
@@ -19,39 +19,42 @@ function Footer() {
   ]
 
   return (
-    <footer className="bg-gray-950 border-t border-gray-800/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand */}
+    <footer className="bg-ink border-t-2 border-hot/40 relative overflow-hidden">
+      <div
+        className="absolute bottom-0 left-[10%] w-64 h-20 bg-electric/20 border-2 border-cream/20 rotate-[-4deg] pointer-events-none"
+        aria-hidden
+      />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.42 }}
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold text-emerald-400">Max Kendall</h3>
-            <p className="text-gray-100 leading-relaxed">
-              Software Engineer passionate about machine learning, data engineering, and building robust systems.
+            <h3 className="font-display font-bold text-2xl text-electric uppercase tracking-[0.12em] glitch-text">Max Kendall</h3>
+            <p className="text-cream/65 leading-relaxed font-semibold max-w-sm">
+              Software engineer — ML, data, and systems that hold up in the real world.
             </p>
           </motion.div>
 
-          {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.42, delay: 0.05 }}
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+            <h4 className="font-display font-bold text-cream uppercase tracking-[0.35em] text-xs">Sitemap</h4>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.to}
-                    className="text-gray-100 hover:text-emerald-400 transition-colors"
+                    className="text-cream/70 hover:text-electric font-semibold transition-colors inline-flex items-center gap-2 group"
                   >
+                    <span className="w-2 h-0.5 bg-hot opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.name}
                   </Link>
                 </li>
@@ -59,55 +62,47 @@ function Footer() {
             </ul>
           </motion.div>
 
-          {/* Social & Contact */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.42, delay: 0.1 }}
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="text-lg font-semibold text-white">Connect</h4>
-            <div className="flex space-x-4">
+            <h4 className="font-display font-bold text-cream uppercase tracking-[0.35em] text-xs">Connect</h4>
+            <div className="flex gap-2">
               {socialLinks.map((link) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-emerald-400 transition-colors p-2"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                  className="text-cream/45 hover:text-electric p-2.5 border-2 border-cream/15 hover:border-electric transition-colors"
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={link.label}
                 >
-                  <link.icon size={24} />
+                  <link.icon size={22} strokeWidth={2.25} />
                 </motion.a>
               ))}
             </div>
-            <div className="text-gray-100 text-sm space-y-1">
+            <div className="text-cream/55 text-sm space-y-1 font-semibold">
               <p>max@maxkendall.com</p>
               <p>07400 502233</p>
             </div>
           </motion.div>
         </div>
 
-        {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.42, delay: 0.12 }}
           viewport={{ once: true }}
-          className="border-t border-gray-800/50 mt-8 pt-8 text-center"
+          className="border-t-2 border-cream/10 mt-14 pt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-cream/40 text-sm font-semibold text-center"
         >
-          <p className="text-gray-400 text-sm flex items-center justify-center space-x-2">
-            <span>© {currentYear} Max Kendall. Made with</span>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <Heart className="text-red-500" size={16} fill="currentColor" />
-            </motion.div>
-            <span>using React & TypeScript</span>
-          </p>
+          <span>© {currentYear} Max Kendall</span>
+          <Zap className="text-hot hidden sm:inline shrink-0" size={16} strokeWidth={2.5} />
+          <span>React &amp; TypeScript</span>
         </motion.div>
       </div>
     </footer>

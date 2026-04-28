@@ -270,24 +270,24 @@ function CNNDemo() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 md:mb-8">
         <Link
           to="/"
-          className="inline-flex items-center space-x-2 text-gray-300 hover:text-emerald-400 transition-colors"
+          className="inline-flex items-center gap-2 font-display font-bold text-xs uppercase tracking-[0.2em] text-cream/55 hover:text-hot transition-colors group"
         >
-          <ArrowLeft size={20} />
-          <span>Back to Home</span>
+          <ArrowLeft size={20} strokeWidth={2.5} className="group-hover:-translate-x-0.5 transition-transform" />
+          <span>Back to home</span>
         </Link>
       </div>
 
-      {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="text-center md:mb-12 px-4"
       >
-        <h1 className="text-4xl py-4 md:py-0 md:text-5xl font-bold text-white mb-4">
-          Draw a <span className="text-emerald-400">Digit</span>
+        <p className="tech-bracket font-display text-electric text-xs font-bold uppercase tracking-[0.35em] mb-4">CNN / WASM</p>
+        <h1 className="font-display font-bold text-4xl py-4 md:py-0 md:text-5xl text-cream mb-4 uppercase tracking-tight">
+          Draw a <span className="text-hot">digit</span>
         </h1>
-        <p className="hidden md:flex text-gray-100 text-lg max-w-2xl mx-auto">
+        <p className="hidden md:block text-cream/70 text-lg max-w-2xl mx-auto font-semibold border-l-4 border-hot pl-5 text-left">
           Draw a digit (0-9) on the canvas below and watch the CNN classify it in real-time.
           This model was built from scratch in C++ and compiled to WebAssembly.
         </p>
@@ -300,21 +300,20 @@ function CNNDemo() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="card p-8">
+        <div className="card p-6 sm:p-8 border-2 border-electric/30 bg-panel-bright/20">
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-16">
-              <Loader2 className="w-12 h-12 text-emerald-400 animate-spin mb-4" />
-              <p className="text-gray-300">Loading neural network model...</p>
+              <Loader2 className="w-12 h-12 text-electric animate-spin mb-4" strokeWidth={2.5} />
+              <p className="text-cream/60 font-semibold">Loading neural network model…</p>
             </div>
           ) : (
-            <div className="flex flex-col lg:flex-row gap-6 items-center lg:items-stretch justify-center">
-              {/* Canvas Section */}
+            <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-stretch justify-center">
               <div className="relative">
                 <canvas
                   ref={canvasRef}
                   width={280}
                   height={280}
-                  className="border-2 border-gray-600 rounded-lg cursor-crosshair touch-none"
+                  className="border-2 border-electric/50 cursor-crosshair touch-none bg-ink"
                   style={{ width: '280px', height: '280px' }}
                   onMouseDown={handleMouseDown}
                   onMouseMove={handleMouseMove}
@@ -325,33 +324,33 @@ function CNNDemo() {
                   onTouchEnd={handleTouchEnd}
                 />
                 <motion.button
+                  type="button"
                   onClick={clearCanvas}
-                  className="absolute top-2 right-2 p-2 bg-gray-800/80 hover:bg-red-500/80 text-gray-300 hover:text-white rounded-lg transition-colors backdrop-blur-sm"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  title="Clear Canvas"
+                  className="absolute top-2 right-2 p-2 bg-panel border-2 border-cream/25 text-cream hover:bg-hot hover:text-ink hover:border-cream transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Clear canvas"
                 >
-                  <Trash2 size={18} />
+                  <Trash2 size={18} strokeWidth={2.25} />
                 </motion.button>
               </div>
 
-              {/* Predictions Section */}
-              <div className="w-[280px] h-[284px] bg-gray-800/50 rounded-lg p-4 border border-gray-700 flex flex-col">
-                <h2 className="text-lg font-semibold text-white mb-2">Predictions</h2>
-                <div className="flex-1 flex flex-col justify-between">
+              <div className="w-[280px] min-h-[284px] bg-panel border-2 border-cream/15 p-4 flex flex-col shadow-[6px_6px_0_rgba(255,15,127,0.25)]">
+                <h2 className="font-display font-bold text-sm uppercase tracking-[0.2em] text-electric mb-4">Predictions</h2>
+                <div className="flex-1 flex flex-col justify-between gap-2">
                   {predictions.length === 0 ? (
-                    <p className="text-gray-400 text-sm">Draw a digit to see predictions</p>
+                    <p className="text-cream/50 text-sm font-medium">Draw a digit to see predictions</p>
                   ) : (
                     predictions.map((pred) => (
                       <div key={pred.digit} className="flex items-center gap-2">
-                        <span className="w-5 text-gray-300 font-mono text-sm">{pred.digit}:</span>
-                        <div className="flex-1 bg-gray-700 rounded-sm h-4 overflow-hidden">
+                        <span className="w-5 text-cream font-mono text-sm tabular-nums">{pred.digit}:</span>
+                        <div className="flex-1 bg-ink border border-cream/20 h-4 overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-sm"
+                            className="h-full bg-electric border-r-2 border-cream/30"
                             style={{ width: `${Math.max(pred.probability * 100, 1)}%` }}
                           />
                         </div>
-                        <span className="w-12 text-right text-gray-300 font-mono text-xs">
+                        <span className="w-12 text-right text-cream/80 font-mono text-xs tabular-nums">
                           {(pred.probability * 100).toFixed(1)}%
                         </span>
                       </div>
@@ -368,12 +367,15 @@ function CNNDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-8 text-center text-gray-400 text-sm"
+          className="mt-8 text-center text-cream/50 text-sm font-medium"
         >
           <p>
             Built with a custom CNN library in C++, compiled to WebAssembly for browser execution.
             <br />
-            <Link to="/blog/cnn-backpropagation" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+            <Link
+              to="/blog/cnn-backpropagation"
+              className="font-display font-bold text-electric hover:text-hot transition-colors uppercase tracking-wide text-xs"
+            >
               Read about the maths behind this →
             </Link>
           </p>

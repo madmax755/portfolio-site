@@ -109,27 +109,27 @@ function SentimentDemo() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <Link
           to="/"
-          className="inline-flex items-center space-x-2 text-gray-300 hover:text-emerald-400 transition-colors"
+          className="inline-flex items-center gap-2 font-display font-bold text-xs uppercase tracking-[0.2em] text-cream/55 hover:text-hot transition-colors group"
         >
-          <ArrowLeft size={20} />
-          <span>Back to Home</span>
+          <ArrowLeft size={20} strokeWidth={2.5} className="group-hover:-translate-x-0.5 transition-transform" />
+          <span>Back to home</span>
         </Link>
       </div>
 
-      {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="text-center mb-12 px-4"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-          Analyse Text <span className="text-emerald-400">Sentiment</span>
+        <p className="tech-bracket font-display text-hot text-xs font-bold uppercase tracking-[0.35em] mb-4">GRU / API</p>
+        <h1 className="font-display font-bold text-4xl md:text-5xl text-cream mb-4 uppercase tracking-tight">
+          Analyse text <span className="text-electric">sentiment</span>
         </h1>
-        <p className="text-gray-100 text-lg max-w-2xl mx-auto">
+        <p className="text-cream/75 text-lg max-w-2xl mx-auto font-semibold border-l-4 border-electric pl-5 text-left">
           Enter any text and watch a neural network analyse its emotional tone.
           This model was built from scratch using a simple recurrent neural network (GRU).
-          As you will be able to see, it's not very accurate, and is a good stepping stone to a transformer model.
+          As you will be able to see, it&apos;s not very accurate, and is a good stepping stone to a transformer model.
         </p>
       </motion.header>
 
@@ -140,76 +140,74 @@ function SentimentDemo() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="card p-8">
+        <div className="card p-6 sm:p-8 border-2 border-hot/35 bg-panel-bright/20">
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Input Section */}
-            <div className="flex-1 flex flex-col space-y-4">
+            <div className="flex-1 flex flex-col gap-4">
               <div
-                className="rounded-lg p-4 transition-all duration-300"
+                className="p-3 border-2 border-ink transition-all duration-300 shadow-[4px_4px_0_#030306]"
                 style={{ backgroundColor: sentiment?.colour || 'rgb(204, 117, 4)' }}
               >
                 <textarea
                   value={text}
                   onChange={handleTextChange}
                   placeholder="Enter your text here..."
-                  className="w-full h-48 bg-gray-800 text-white rounded-lg p-4 resize-none focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+                  className="w-full h-48 bg-panel text-cream border-2 border-cream/15 p-4 resize-none focus:outline-none focus:border-electric font-medium placeholder:text-cream/35"
                 />
               </div>
               <motion.button
+                type="button"
                 onClick={clearText}
-                className="flex items-center justify-center space-x-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-panel border-2 border-cream/25 text-cream font-display font-bold text-xs uppercase tracking-[0.15em] hover:bg-hot hover:text-ink hover:border-cream transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Trash2 size={18} />
-                <span>Clear Text</span>
+                <Trash2 size={18} strokeWidth={2.25} />
+                <span>Clear text</span>
               </motion.button>
             </div>
 
-            {/* Results Section */}
-            <div className="w-full lg:w-72 bg-gray-800/50 rounded-lg p-6 border border-gray-700 flex flex-col">
-              <h2 className="text-xl font-semibold text-white mb-4">Analysis</h2>
-              
+            <div className="w-full lg:w-72 bg-panel border-2 border-cream/15 p-6 flex flex-col shadow-[6px_6px_0_rgba(0,242,255,0.2)]">
+              <h2 className="font-display font-bold text-sm uppercase tracking-[0.2em] text-electric mb-4">Analysis</h2>
+
               {isAnalysing ? (
-                <div className="flex-1 flex items-center justify-center">
-                  <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
+                <div className="flex-1 flex items-center justify-center py-8">
+                  <Loader2 className="w-8 h-8 text-electric animate-spin" strokeWidth={2.5} />
                 </div>
               ) : sentiment ? (
                 <div className="space-y-4">
-                  <div className="text-center py-4">
+                  <div className="text-center py-4 border-2 border-cream/10 bg-ink/50">
                     <div
-                      className="text-4xl font-bold mb-2"
+                      className="font-display text-4xl font-bold mb-2 tabular-nums"
                       style={{ color: sentiment.colour }}
                     >
                       {(sentiment.score * 100).toFixed(0)}%
                     </div>
-                    <div className="text-xl text-gray-200">{sentiment.label}</div>
+                    <div className="text-lg text-cream/90 font-semibold">{sentiment.label}</div>
                   </div>
 
-                  {/* Sentiment gauge */}
-                  <div className="relative h-4 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="relative h-5 bg-ink border-2 border-cream/20 overflow-hidden">
                     <div
-                      className="absolute inset-y-0 left-0 rounded-full transition-all duration-300"
+                      className="absolute inset-y-0 left-0 transition-all duration-300 border-r-2 border-cream/40"
                       style={{
                         width: `${sentiment.score * 100}%`,
-                        background: `linear-gradient(to right, #cf020c, #cc7504, #22c55e)`
+                        backgroundColor: sentiment.colour,
                       }}
                     />
                     <motion.div
-                      className="absolute top-1/2 w-3 h-3 bg-white rounded-full shadow-lg -translate-y-1/2"
+                      className="absolute top-1/2 w-3 h-3 bg-cream border-2 border-ink -translate-y-1/2"
                       animate={{ left: `calc(${sentiment.score * 100}% - 6px)` }}
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   </div>
 
-                  <div className="flex justify-between text-xs text-gray-400">
+                  <div className="flex justify-between text-[10px] font-display font-bold uppercase tracking-wider text-cream/45">
                     <span>Negative</span>
                     <span>Neutral</span>
                     <span>Positive</span>
                   </div>
                 </div>
               ) : (
-                <p className="text-gray-400 text-sm">Enter text to analyse sentiment</p>
+                <p className="text-cream/50 text-sm font-medium">Enter text to analyse sentiment</p>
               )}
             </div>
           </div>
@@ -222,16 +220,17 @@ function SentimentDemo() {
           transition={{ delay: 0.4 }}
           className="mt-8"
         >
-          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <Sparkles size={18} className="text-emerald-400" />
+          <h3 className="font-display font-bold text-cream mb-4 flex items-center gap-2 uppercase tracking-wide text-sm">
+            <Sparkles size={18} className="text-hot shrink-0" strokeWidth={2.25} />
             Try an example
           </h3>
           <div className="flex flex-wrap gap-3">
             {exampleTexts.map((example, index) => (
               <motion.button
                 key={index}
+                type="button"
                 onClick={() => handleExampleClick(example.text)}
-                className="px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700 hover:border-emerald-500/50 text-gray-300 rounded-lg text-sm transition-all"
+                className="px-4 py-2 bg-panel border-2 border-cream/20 text-cream/85 text-sm font-semibold hover:border-electric hover:text-electric transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -246,12 +245,15 @@ function SentimentDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-8 text-center text-gray-400 text-sm"
+          className="mt-8 text-center text-cream/50 text-sm font-medium"
         >
           <p>
             Built with a custom feedforward neural network in C++.
             <br />
-            <Link to="/portfolio" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+            <Link
+              to="/portfolio"
+              className="font-display font-bold text-electric hover:text-hot transition-colors uppercase tracking-wide text-xs"
+            >
               See more projects →
             </Link>
           </p>

@@ -8,18 +8,18 @@ function Blog() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.09,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.42,
       },
     },
   }
@@ -28,41 +28,47 @@ function Blog() {
     {
       title: 'Backpropagation for Convolutional Neural Networks',
       date: 'Dec 2024',
-      description: 'A deep dive into the mathematics and implementation of backpropagation in CNNs, including gradient computation for convolutional layers.',
+      description:
+        'A deep dive into the mathematics and implementation of backpropagation in CNNs, including gradient computation for convolutional layers.',
       slug: 'cnn-backpropagation',
-      tags: ['Machine Learning', 'CNN', 'Mathematics']
-    }
+      tags: ['Machine Learning', 'CNN', 'Mathematics'],
+    },
   ]
 
   const recentUpdates = [
     { title: 'CNN Demo', link: '/cnn-demo', type: 'Project', isExternal: false },
-    { title: 'Backpropagation for CNNs', link: '/blog/cnn-backpropagation', type: 'Article', isExternal: false }
+    { title: 'Backpropagation for CNNs', link: '/blog/cnn-backpropagation', type: 'Article', isExternal: false },
   ]
 
   return (
     <div className="pt-16">
-      {/* Header */}
-      <section className="py-10 md:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto relative">
+          <div
+            className="absolute -top-2 left-4 md:left-12 w-28 h-28 border-2 border-electric/50 rotate-[10deg] pointer-events-none hidden md:block bg-electric/10"
+            aria-hidden
+          />
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+            transition={{ duration: 0.48 }}
+            className="relative z-10 text-center md:text-left max-w-3xl mx-auto md:mx-0"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-emerald-400 to-emerald-500 bg-clip-text text-transparent">
-                Blog & Articles
-              </span>
+            <p className="tech-bracket font-display font-bold text-electric uppercase tracking-[0.35em] text-xs mb-5">Writing</p>
+            <h1 className="font-display font-bold text-cream text-4xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 uppercase tracking-tight">
+              Blog
+              <span className="text-hot"> / </span>
+              articles
             </h1>
-            <p className="text-xl text-gray-100 max-w-3xl mx-auto">
-              Thoughts on software engineering, machine learning, and technology
-            </p>
+            <div className="md:max-w-2xl border-l-4 border-hot pl-5 py-2 bg-panel/40 border-y border-r border-cream/10">
+              <p className="text-lg md:text-xl text-cream/75 font-semibold">
+                Notes on engineering, ML, and whatever I have been obsessing over lately.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Blog Posts */}
       <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -72,37 +78,34 @@ function Blog() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {blogPosts.map((post, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-              >
+              <motion.div key={index} variants={itemVariants} className={index === 0 ? 'md:col-span-2 lg:col-span-1' : ''}>
                 <Link
                   to={`/blog/${post.slug}`}
-                  className="card group hover:border-emerald-500/30 transition-all duration-300 block cursor-pointer"
+                  className="card group block h-full border-t-[8px] border-t-hot hover:border-t-electric bg-panel-bright/30"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-2 text-gray-400">
-                      <Calendar size={16} />
-                      <span className="text-sm">{post.date}</span>
+                    <div className="flex items-center gap-2 text-cream/50 font-semibold text-sm">
+                      <Calendar size={16} strokeWidth={2.25} />
+                      <span>{post.date}</span>
                     </div>
-                    <div className="text-emerald-400 group-hover:text-emerald-300 transition-colors p-2">
-                      <ArrowRight size={18} />
-                    </div>
+                    <ArrowRight
+                      size={20}
+                      strokeWidth={2.5}
+                      className="text-cream/30 group-hover:text-electric group-hover:translate-x-1 transition-all"
+                    />
                   </div>
 
-                  <h2 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">
+                  <h2 className="font-display font-bold text-xl text-cream mb-3 group-hover:text-hot transition-colors leading-snug uppercase tracking-tight">
                     {post.title}
                   </h2>
 
-                  <p className="text-gray-100 mb-4 leading-relaxed">
-                    {post.description}
-                  </p>
+                  <p className="text-cream/70 mb-6 leading-relaxed font-medium">{post.description}</p>
 
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="text-xs bg-emerald-500/10 text-emerald-300 px-2 py-1 rounded-full"
+                        className="text-[10px] font-display font-bold uppercase tracking-[0.15em] text-ink bg-electric px-2.5 py-1 border-2 border-ink"
                       >
                         {tag}
                       </span>
@@ -115,58 +118,52 @@ function Blog() {
         </div>
       </section>
 
-      {/* Recent Updates Sidebar */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-surface border-t-2 border-electric/20">
         <div className="max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.48 }}
             viewport={{ once: true }}
-            className="text-center"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 flex items-center justify-center space-x-3">
-              <BookOpen className="text-emerald-400" size={32} />
-              <span>Recent Updates</span>
+            <h2 className="font-display font-bold text-cream text-2xl md:text-4xl mb-12 flex flex-wrap items-center justify-center gap-4 uppercase tracking-tight">
+              <BookOpen className="text-electric shrink-0" size={36} strokeWidth={2.25} />
+              <span>Recent updates</span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {recentUpdates.map((update, index) => (
+              {recentUpdates.map((update, index) =>
                 update.isExternal ? (
                   <motion.a
                     key={index}
                     href={update.link}
-                    className="card text-center group hover:border-emerald-500/30 transition-all duration-300"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    className="card text-center border-l-[8px] border-l-electric group bg-panel-bright/20"
+                    whileHover={{ y: -3 }}
+                    whileTap={{ scale: 0.99 }}
                   >
-                    <div className="text-emerald-400 text-sm font-semibold mb-2 bg-emerald-500/10 px-3 py-1 rounded-full inline-block">
+                    <div className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-hot mb-3 inline-block border-2 border-hot px-2 py-1">
                       {update.type}
                     </div>
-                    <h3 className="text-lg font-semibold text-white group-hover:text-emerald-300 transition-colors">
+                    <h3 className="font-display font-bold text-lg text-cream group-hover:text-electric transition-colors uppercase tracking-wide">
                       {update.title}
                     </h3>
                   </motion.a>
                 ) : (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
+                  <motion.div key={index} whileHover={{ y: -3 }} whileTap={{ scale: 0.99 }}>
                     <Link
                       to={update.link}
-                      className="card text-center group hover:border-emerald-500/30 transition-all duration-300 block"
+                      className="card text-center border-l-[8px] border-l-electric group block h-full bg-panel-bright/20"
                     >
-                      <div className="text-emerald-400 text-sm font-semibold mb-2 bg-emerald-500/10 px-3 py-1 rounded-full inline-block">
+                      <div className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-hot mb-3 inline-block border-2 border-hot px-2 py-1">
                         {update.type}
                       </div>
-                      <h3 className="text-lg font-semibold text-white group-hover:text-emerald-300 transition-colors">
+                      <h3 className="font-display font-bold text-lg text-cream group-hover:text-electric transition-colors uppercase tracking-wide">
                         {update.title}
                       </h3>
                     </Link>
                   </motion.div>
-                )
-              ))}
+                ),
+              )}
             </div>
           </motion.div>
         </div>
