@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Zap } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 function Footer() {
@@ -20,23 +20,16 @@ function Footer() {
 
   return (
     <footer className="bg-ink border-t-2 border-hot/40 relative overflow-hidden">
-      <div
-        className="absolute bottom-0 left-[10%] w-64 h-20 bg-electric/20 border-2 border-cream/20 rotate-[-4deg] pointer-events-none"
-        aria-hidden
-      />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr_1fr] gap-8 md:gap-10 items-start">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.42 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            className="space-y-2"
           >
             <h3 className="font-display font-bold text-2xl text-electric uppercase tracking-[0.12em] glitch-text">Max Kendall</h3>
-            <p className="text-cream/65 leading-relaxed font-semibold max-w-sm">
-              Software engineer — ML, data, and systems that hold up in the real world.
-            </p>
           </motion.div>
 
           <motion.div
@@ -44,10 +37,10 @@ function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.42, delay: 0.05 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            className="space-y-3"
           >
             <h4 className="font-display font-bold text-cream uppercase tracking-[0.35em] text-xs">Sitemap</h4>
-            <ul className="space-y-2">
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
               {footerLinks.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -67,7 +60,7 @@ function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.42, delay: 0.1 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            className="space-y-3"
           >
             <h4 className="font-display font-bold text-cream uppercase tracking-[0.35em] text-xs">Connect</h4>
             <div className="flex gap-2">
@@ -98,11 +91,9 @@ function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.42, delay: 0.12 }}
           viewport={{ once: true }}
-          className="border-t-2 border-cream/10 mt-14 pt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-cream/40 text-sm font-semibold text-center"
+          className="border-t-2 border-cream/10 mt-8 pt-5 text-cream/40 text-sm font-semibold text-center"
         >
           <span>© {currentYear} Max Kendall</span>
-          <Zap className="text-hot hidden sm:inline shrink-0" size={16} strokeWidth={2.5} />
-          <span>React &amp; TypeScript</span>
         </motion.div>
       </div>
     </footer>
