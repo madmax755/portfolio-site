@@ -91,7 +91,7 @@ function Hero() {
               <div className="relative max-w-xl mx-auto lg:mx-0">
                 <div className="absolute -left-1 top-0 bottom-0 w-1 bg-hot" aria-hidden />
                 <p className="font-sans text-lg sm:text-xl md:text-2xl font-semibold text-cream/90 pl-5 py-2 border-2 border-cream/10 bg-panel/60">
-                  Software engineer &amp; data enthusiast — I build systems that feel as good as they run.
+                  Software engineer &amp; data enthusiast.
                 </p>
               </div>
             </motion.div>
