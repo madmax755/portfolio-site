@@ -14,8 +14,13 @@ import SentimentDemo from './components/SentimentDemo'
 // Lazy load MDX blog posts for better performance
 const CnnBackpropagation = lazy(() => import('./content/blog/cnn-backpropagation.mdx'))
 
-// Frontmatter needs to be imported separately (not lazy)
-import { frontmatter as cnnFrontmatter } from './content/blog/cnn-backpropagation.mdx'
+const cnnFrontmatter = {
+  title: 'Understanding the CNN Equations of Backpropagation',
+  date: 'December 2024',
+  description:
+    'A deep dive into the mathematics and implementation of backpropagation in CNNs, including gradient computation for convolutional layers.',
+  tags: ['Machine Learning', 'CNN', 'Mathematics'],
+}
 
 function BlogLoading() {
   return (
