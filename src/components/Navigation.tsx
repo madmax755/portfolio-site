@@ -37,11 +37,6 @@ function Navigation() {
             </Link>
           </motion.div>
 
-          <div className="hidden md:flex items-center gap-1 px-3 py-1 border border-cream/15 bg-panel/80">
-            <span className="w-2 h-2 bg-electric animate-pulse" aria-hidden />
-            <span className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-cream/60">Online</span>
-          </div>
-
           <div className="hidden md:block">
             <div className="flex items-center gap-1">
               {navItems.map((item) => (
